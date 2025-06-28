@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sticky Notes App💟</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f5f0;
+      padding: 20px;
+    }
+    #notes-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      min-height: 300px;
+      border: 2px dashed #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      background: #fff;
+    }
+    button#add-note-btn {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #8a6e6e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    /* Note styles */
+    .note {
+      position: relative;
+      width: 200px;
+      background: #fffb88;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .note-header {
+      display: flex;
+      justify-content: flex-end;
+      background: #f2e66f;
+      padding: 4px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    .note-header button {
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .note textarea {
+      border: none;
+      resize: none;
+      padding: 10px;
+      background: transparent;
+      flex-grow: 1;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    .note textarea:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sticky Notes💖</h1>
+  <div id="notes-container"></div>
+  <button id="add-note-btn">Add New Note🩷</button>
+
+  <script>
+    const container = document.getElementById('notes-container');
+    const addBtn = document.getElementById('add-note-btn');
+
+    // Function to create a note element
+    function createNote() {
+      // Note wrapper
+      const note = document.createElement('div');
+      note.className = 'note';
+
+      // Header with delete button
+      const header = document.createElement('div');
+      header.className = 'note-header';
+      const delBtn = document.createElement('button');
+      delBtn.innerText = '✕';
+      // Delete note on click
+      delBtn.addEventListener('click', () => container.removeChild(note));
+      header.appendChild(delBtn);
+
+      // Text area for content
+      const textarea = document.createElement('textarea');
+      textarea.rows = 8;
+      textarea.placeholder = 'Type your note here...🌷';
+
+      // Assemble note
+      note.appendChild(header);
+      note.appendChild(textarea);
+      container.appendChild(note);
+    }
+
+    // Add a note when button is clicked
+    addBtn.addEventListener('click', createNote);
+  </script>
+</body>
+</html>
